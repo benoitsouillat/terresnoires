@@ -15,7 +15,7 @@ let menuContainer = document.createElement("div");
 let listReproContainer = document.createElement("div");
     listReproContainer.innerHTML = "";
     listReproContainer.id = "listReproContainer";
-    listReproContainer.style.display = "none";
+    // listReproContainer.style.display = "none";
 
 menuContent.appendChild(menuContainer);
 
@@ -47,53 +47,67 @@ let reproButton = menuContainer.children[1];
 
 let cssButtonListRepro = window.getComputedStyle(reproButton);
 
+const hideListRepro = (e) => {
 
-const showListRepro = () => { 
-
-    listReproContainer.innerHTML = "";
-    listReproContainer.style.display = "flex";
-    listReproContainer.style.flexDirection = "column";
-    listReproContainer.style.justifyContent = "center";
-    listReproContainer.style.border = "black 0px solid";
-    listReproContainer.style.position = "absolute";
-    listReproContainer.style.left = reproButton.offsetLeft + "px";
-    listReproContainer.style.top = reproButton.offsetTop + 50 + "px";
-
-
-
-    dogClass.forEach(elt => {
-
-
-        let dogList = document.createElement("div");
-            dogList.classList.add("button-menu");
-            dogList.style.width = cssButtonListRepro.width;
-
-
-        let dogNameLink = document.createElement("a");
-            dogNameLink.href = "#"
-            dogNameLink.textContent = elt.dogName;
-
-        listReproContainer.appendChild(dogList);
-        dogList.appendChild(dogNameLink);
-
-        dogNameLink.addEventListener("click", showImgDog);
-        dogNameLink.addEventListener("click", showInfosDog);
-        
-    });
-
-
-    
-};
-
-const hideListRepro = () => {
 
     listReproContainer.style.display = "none";
     listReproContainer.innerHTML = "";
 }
 
 
-reproButton.addEventListener("click", showListRepro);
-// listReproContainer.addEventListener("mouseover", showListRepro);
+const showListRepro = () => { 
+
+    listReproContainer.innerHTML = "";
+    listReproContainer.style.display = "flex";
+    listReproContainer.style.position = "absolute";
+    listReproContainer.style.left = reproButton.offsetLeft + "px";
+    listReproContainer.style.top = reproButton.offsetTop + 50 + "px";
+
+    dogClass.forEach(elt => {
+
+        let dogList = document.createElement("div");
+            dogList.classList.add("button-menu");
+            dogList.style.width = cssButtonListRepro.width;
+
+        let dogNameLink = document.createElement("a");
+            dogNameLink.href = "#";
+            dogNameLink.textContent = elt.dogName;
+
+        listReproContainer.appendChild(dogList);
+        dogList.appendChild(dogNameLink);
+
+        dogList.addEventListener("click", showImgDog);
+        dogList.addEventListener("click", showInfosDog);
+        
+    });
+};
+
+const positionListRepro = (e) => {
+
+
+     let startPositionLeft = reproButton.offsetLeft;
+     let startPositionTop = reproButton.offsetTop;
+ 
+     let endPositionLeft = startPositionLeft + listReproContainer.offsetWidth;
+     let endPositionTop = startPositionTop + listReproContainer.offsetHeight + reproButton.offsetHeight;
+
+    reproButton.addEventListener("mouseover", showListRepro, {once: true});
+
+     if (e.clientX >= startPositionLeft && e.clientX <= endPositionLeft && e.clientY >= startPositionTop && e.clientY <= endPositionTop)
+     {
+        showListRepro();
+     }
+     else
+     {
+         hideListRepro();
+     }
+ }
+
+
+reproButton.addEventListener("mouseover", positionListRepro);
+listReproContainer.addEventListener("mouseout", positionListRepro);
+reproButton.addEventListener("mouseout", positionListRepro);
+
 
 listReproContainer.addEventListener("click", hideListRepro);
 
