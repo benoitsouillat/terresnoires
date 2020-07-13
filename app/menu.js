@@ -202,7 +202,7 @@ let albumContent = document.createElement("div");
     dogClass.forEach(elt => {
 
         let dogNameLink = document.createElement("a");
-            dogNameLink.textContent = elt.dogName + "  ";
+            dogNameLink.textContent = elt.dogName;
             dogNameLink.href = "#";
             dogNameLink.classList.add("list-dog-link");
             dogNameLink.classList.add("dogNameLink");
@@ -250,36 +250,37 @@ let arrowLeft = document.createElement("a");
     arrowLeft.style.paddingBottom = "20px";
 
 let navigationDiapo = 0;
+let arrayUrl = images;
+
 
 const showPictDiapo = () => {
 
-    imageDefault.src = path + images[navigationDiapo] + jpg;
+    imageDefault.src = path + arrayUrl[navigationDiapo] + jpg;
 }
 
 const chooseDogPict = (e) => {
 
     let dogName = e.target.textContent.toLowerCase();
+    arrayUrl = [];
+    let j = 0;
 
-    if (images[navigationDiapo].indexOf(dogName) === 0)
-    {
-        imageDefault.src = path + images[navigationDiapo] + jpg;
-    }
-    else if (navigationDiapo < images.length)
-    {
-        navigationDiapo += 1;
+    for (let i in images) {
 
+        if (images[i].indexOf(dogName) === 0)
+        {
+            arrayUrl[j] = images[i];
+            j++;
+        }
     }
-    else{
-        console.log("il n'y a plus d'image");
-    }
-
+    
+    navigationDiapo = 0;
+    showPictDiapo();
 }
-
 
 const nextPict = (e) => {
 
     e.preventDefault();
-    if(navigationDiapo >= 0 && navigationDiapo < (images.length - 1))
+    if(navigationDiapo >= 0 && navigationDiapo < (arrayUrl.length - 1))
     {
         navigationDiapo += 1;
         showPictDiapo();
@@ -287,13 +288,11 @@ const nextPict = (e) => {
     else {
         console.log("Il n'y a plus de photo")
     }
-
 }
 
 const lastPict = (e) => {
 
     e.preventDefault();
-
 
     if(navigationDiapo > 0 && navigationDiapo < images.length)
     {
@@ -303,7 +302,6 @@ const lastPict = (e) => {
     else {
         console.log("Il n'y a plus de photo")
     }
-
 }
 
 arrowLeft.addEventListener("click", lastPict);
