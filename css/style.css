@@ -105,6 +105,7 @@
     flex-direction: column;
     text-align: center;
     justify-content: flex-start;
+    align-items: center;
 }
 .album-content { /* Nos albums Photos => Contenant du diaporama */
 
@@ -136,9 +137,10 @@
     color: beige;
     font-weight: bold;
 }
-.image-diapo-photo {
+.image-diapo-photo { /* Image affichée dans le diaporama */ 
     max-height: 500px;
     width: auto;
+    max-width: 95%;
 
 }
 

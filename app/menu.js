@@ -160,6 +160,8 @@ fbButton.addEventListener("click", startfb);
 let albumButton = menuContainer.children[2];
 let imageDefault = document.createElement("img");
 let dogListContent = document.createElement("div");
+let albumContent = document.createElement("div");
+
 
 const showAlbum = () => {
 
@@ -176,7 +178,6 @@ const showAlbum = () => {
 let thisIsAlbum = document.createElement("h1");
     thisIsAlbum.textContent = " Voici nos albums photos";
     dogListContent.classList.add("dog-list-content");
-let albumContent = document.createElement("div");
     albumContent.classList.add("album-content");
 
     contentTitle.appendChild(thisIsAlbum);
@@ -191,6 +192,7 @@ let albumContent = document.createElement("div");
             dogNameLink.href = "#";
             dogNameLink.classList.add("list-dog-link");
             dogListContent.appendChild(dogNameLink);
+            dogNameLink.addEventListener("click", chooseDogPict);
 
     });
 
@@ -233,8 +235,10 @@ const resetDogListColor = () => {
 const chooseDogPict = (e) => {
 
     resetDogListColor();
+    e.preventDefault();
     e.target.style.backgroundColor = "white";
     e.target.style.color = "black";
+ 
     let dogName = e.target.textContent.toLowerCase();
     
     arrayUrl = [];
@@ -246,6 +250,12 @@ const chooseDogPict = (e) => {
         {
             arrayUrl[j] = images[i];
             j++;
+        }
+        else {
+            let message = document.createElement("p");
+            message.textContent = "Pas d'image à afficher"; // A terminer
+
+
         }
     }
     navigationDiapo = 0;
@@ -282,7 +292,7 @@ const lastPict = (e) => {
 arrowLeft.addEventListener("click", lastPict);
 arrowRight.addEventListener("click", nextPict);
 albumButton.addEventListener("click", showAlbum);
-dogListContent.addEventListener("click", chooseDogPict);
+//dogListContent.addEventListener("click", chooseDogPict);
 
 
 
