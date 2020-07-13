@@ -4,13 +4,13 @@ let menuContent = document.getElementById("menu");
     menuContent.style.justifyContent = "center";
     menuContent.style.alignItems = "center";
 
-let menuObject = ["Accueil", "Nos reproducteurs", "Nos album Photos", "Nos portées",
-"Contact", "Notre Facebook", "Le Cane Corso"];
+let menuObject = ["Accueil", "Nos reproducteurs", "Nos album Photos", "Nos portées" , "Le Cane Corso",
+"Contact", "Notre Facebook"];
 
 let menuContainer = document.createElement("div");
     menuContainer.id = "menu-container";
     menuContainer.style.display = "flex";
-    menuContainer.style.justifyContent = "center";
+    menuContainer.style.justifyContent = "space-around";
 
 let listReproContainer = document.createElement("div");
     listReproContainer.innerHTML = "";
@@ -40,14 +40,12 @@ menuObject.forEach(elt => {
 
 // Menu reproducteur
 
-
-
 let reproButton = menuContainer.children[1];
     reproButton.onmouseover = "showListRepro()"; // Ne fonctionne pas
 
 let cssButtonListRepro = window.getComputedStyle(reproButton);
 
-const hideListRepro = (e) => {
+const hideListRepro = () => {
 
 
     listReproContainer.style.display = "none";
@@ -101,6 +99,7 @@ const positionListRepro = (e) => {
      {
          hideListRepro();
      }
+     
  }
 
 
@@ -108,8 +107,55 @@ reproButton.addEventListener("mouseover", positionListRepro);
 listReproContainer.addEventListener("mouseout", positionListRepro);
 reproButton.addEventListener("mouseout", positionListRepro);
 
-
 listReproContainer.addEventListener("click", hideListRepro);
+
+// Menu Cane Corso
+
+let caneButton = menuContainer.children[4];
+let caneCorsoInfo = document.getElementById("info-cane-corso");
+
+const infoCane = () => {
+
+    caneCorsoInfo.style.display = "flex";
+    caneCorsoInfo.style.flexDirection = "column";
+    caneCorsoInfo.style.justifyContent = "flex-start";
+    dogPictPut.style.display = "none";
+    dogInfosPut.style.display = "none";
+
+}
+caneButton.addEventListener("click", infoCane);
+caneButton.addEventListener("click", hideListRepro);
+
+// Bouton Accueil
+
+let accueilButton = menuContainer.children[0];
+
+const showAccueil = () => {
+
+    caneCorsoInfo.style.display = "none";
+    dogPictPut.style.display = "none";
+    dogInfosPut.style.display = "none";
+}
+
+accueilButton.addEventListener("click", showAccueil);
+
+// Bouton Facebook
+
+let fbButton = menuContainer.children[6];
+
+const startfb = () => {
+
+
+    caneCorsoInfo.style.display = "none";
+    dogPictPut.style.display = "none";
+    dogInfosPut.style.display = "none";
+    window.open("https://www.facebook.com/profile.php?id=100002013940417", "_blank");
+}
+
+fbButton.addEventListener("click", startfb);
+
+// Bouton Album photo
+
 
 
 

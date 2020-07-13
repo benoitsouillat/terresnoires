@@ -28,23 +28,6 @@ let irreelle = new dog("Irréelle", "15 Septembre 2013", "whippet", damoiseaux, 
 
 let dogClass = [okkaina, panama, rock, irreelle]; 
 
-
-// Afficher liste Chien
-/*
-for (let i in dogClass)
-{
-    let dogLiElt = document.createElement("li");
-    let dogAElt = document.createElement("a");
-    dogAElt.href = dogClass[i].dogLink;
-    dogAElt.textContent = dogClass[i].dogName;
-    dogAElt.style.color = "darkgoldenrod";
-
-    document.getElementById("dog_list").appendChild(dogLiElt);
-    dogLiElt.appendChild(dogAElt);
-}
-*/
-
-
 // Afficher les informations du chien
 
 let dogNameLink = document.getElementById("dog_list");
@@ -55,8 +38,11 @@ content.appendChild(dogInfosPut);
 
 const showInfosDog = (e) => {
 
+
+    caneCorsoInfo.style.display = "none";
     dogInfosPut.innerHTML = "";
     dogInfosPut.style.marginTop = "50px";
+    dogInfosPut.style.display = "block";
     let dogNameClick = e.target.textContent;
     
     for(let i in dogClass)
@@ -124,3 +110,12 @@ const showImgDog = (e) => {
 
 dogNameLink.addEventListener("click", showImgDog);
 dogNameLink.addEventListener("click", showInfosDog);
+
+
+// Image de Infos Cane Corso 
+
+let imageContentInfosCane = document.getElementById("image-info-cane");
+let imageInfosCane = document.createElement("img");
+    imageInfosCane.src = path + images[0] + jpg;
+
+imageContentInfosCane.appendChild(imageInfosCane);

@@ -12,8 +12,45 @@
     flex-direction: column;
     justify-content: center;
     border: 0px black solid;
+}
+
+#info-cane-corso {
+
+    display: none;
+    color: "beige";
+}
+
+#info-cane-corso div {
+
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#image-info-cane {
+
+    width: 50%;
 
 }
+
+#image-info-cane img {
+
+    width: 80%;
+}
+
+
+.paragraphe {
+
+    color: beige;
+    width: 50%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    
+
+}
+
 
 .div-menu {
 
@@ -81,6 +118,13 @@
 
 }
 
+img {
+
+    padding: 2px;
+    border: beige 1px solid;
+    border-radius: 2%;
+}
+
 
 body {
     background-color: #282c34;
@@ -90,6 +134,11 @@ h1 {
     color: beige;
     text-align: center;
     text-decoration: underline;
+}
+h3 {
+    color: beige;
+    text-align: center;
+    font-style: italic;
 }
 
 
