@@ -4,6 +4,7 @@ const templeJade = " du temple de jade";
 const diMunteanu = " Cane di munteanu";
 const damoiseaux = " de la romance des damoiseaux";
 
+let contentTitle = document.getElementById("content-title");
 let content = document.getElementById("content");
 content.style.display = "flex";
 content.style.flexDirection = "row";
@@ -34,15 +35,19 @@ let dogNameLink = document.getElementById("dog_list");
 
 let dogInfosPut = document.createElement("div");
 dogInfosPut.id = "infos_container";
-content.appendChild(dogInfosPut);
 
 const showInfosDog = (e) => {
 
 
+    content.innerHTML = "";
+    contentTitle.innerHTML = "";
+    content.style.justifyContent = "space-around";
+    content.style.marginTop = "50px";
+    content.appendChild(dogInfosPut);
+
     caneCorsoInfo.style.display = "none";
     dogInfosPut.innerHTML = "";
     dogInfosPut.style.marginTop = "50px";
-    dogInfosPut.style.display = "block";
     let dogNameClick = e.target.textContent;
     
     for(let i in dogClass)
@@ -51,17 +56,13 @@ const showInfosDog = (e) => {
         {
             let dogName = document.createElement("h1");
                 dogName.textContent = dogClass[i].dogName;
-                dogName.style.color = "beige";
                 dogName.style.textDecoration = "underline";
             let dogBirth = document.createElement("p");
                 dogBirth.textContent = "Date de naissance : " + dogClass[i].dogBirth;
-                dogBirth.style.color = "beige";
             let dogBreed = document.createElement("p");
                 dogBreed.textContent = "Race : " + dogClass[i].dogBreed;
-                dogBreed.style.color = "beige";
                 dogBreed.style.fontWeight = "bold";
             let dogBreeder = document.createElement("p");
-                dogBreeder.style.color = "beige";
                 dogBreeder.style.fontWeight = "bold";
                 dogBreeder.style.textAlign = "center";
                 dogBreeder.style.marginBottom = "50px";
@@ -84,11 +85,12 @@ let jpg = ".jpg";
 
 let dogPictPut = document.createElement("div");
 dogPictPut.id = "picture_container";
-content.appendChild(dogPictPut);
 
 const showImgDog = (e) => {
 
+
     dogPictPut.innerHTML = "";
+    content.appendChild(dogPictPut);
     let dogName = e.target.textContent.toLowerCase();
 
     for (let i in images)

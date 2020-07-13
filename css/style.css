@@ -71,6 +71,7 @@
     box-shadow: 1px 1px 3px white;
     background-color: black;
     text-align: center;
+    text-decoration: none;
 }
 
 .button-menu:hover {
@@ -78,14 +79,11 @@
     border: solid 2px violet;
     border-radius: 10px;
     box-shadow: 2px 1px 5px violet;
-    color: violet;
-}
-
-.button-menu a {
-
+    color: violet;    
     text-decoration: none;
 }
-.button-menu a:visited {
+
+.button-menu:visited {
 
     color: beige;
 }
@@ -97,6 +95,24 @@
 
 
 
+.list-dog-link {
+
+
+    border: beige 2px solid;
+    box-shadow: 1px 1px 5px beige;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5%;
+    text-decoration: none;
+    font-size: 1.2em;
+
+
+}
+.list-dog-link:visited {
+
+    color: beige;
+    font-weight: bold;
+}
 
 
 
@@ -118,8 +134,12 @@
 
 }
 
-img {
 
+
+
+/* Elements basiques */
+
+img {
     padding: 2px;
     border: beige 1px solid;
     border-radius: 2%;
@@ -139,6 +159,10 @@ h3 {
     color: beige;
     text-align: center;
     font-style: italic;
+}
+p {
+
+    color: beige;
 }
 
 
