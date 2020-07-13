@@ -1,4 +1,9 @@
 /* Class menu js  */
+#content {
+
+    margin-top: 50px;
+}
+
 #menu-container {
 
     width: 75%;
@@ -93,10 +98,29 @@
     color: violet;
 }
 
+.dog-list-content { /* Nos album Photos => Contenant de Liste des nom de chien */
 
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+}
+.album-content { /* Nos albums Photos => Contenant du diaporama */
 
-.list-dog-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* ou space-between */
+    width: 68%;
+    padding: 10px;
+    border: cadetblue solid 2px;
+    box-shadow: 5px 5px 2px cadetblue;
+    border-radius: 3%;
+    background-color: black;
 
+}
+
+.list-dog-link { /* Nos album Photos => Liste des noms des chiens */
 
     border: beige 2px solid;
     box-shadow: 1px 1px 5px beige;
@@ -105,16 +129,27 @@
     border-radius: 5%;
     text-decoration: none;
     font-size: 1.2em;
-
-
+    width: 70%;
 }
 .list-dog-link:visited {
 
     color: beige;
     font-weight: bold;
 }
+.image-diapo-photo {
+    max-height: 500px;
+    width: auto;
 
+}
 
+.arrow {  /* Fleche de déplacement dans les diaporamas */
+    border: 2px solid beige;
+    box-shadow: 2px 2px 4px beige;
+    font-size: 2em;
+    height: 20px;
+    width: 20px;
+    padding-bottom: 20px;
+}
 
 
 

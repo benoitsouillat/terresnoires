@@ -25,9 +25,10 @@ let okkaina = new dog ("Okkaina", "10 Septembre 2018", breed, templeJade, "#");
 let panama = new dog ("Panama", "02 Juin 2019", breed, templeJade, "#");
 let rock = new dog ("Rock", "18 Mars 2018", breed, diMunteanu, "#");
 let irreelle = new dog("Irréelle", "15 Septembre 2013", "whippet", damoiseaux, "#" );
+let nuitetoile = new dog("Nuit d'étoiles", "31 Octobre 2017", "whippet", damoiseaux, "#" );
 
 
-let dogClass = [okkaina, panama, rock, irreelle]; 
+let dogClass = [okkaina, panama, rock, irreelle, nuitetoile]; 
 
 // Afficher les informations du chien
 

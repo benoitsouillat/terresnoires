@@ -64,18 +64,13 @@ const showListRepro = () => {
 
     dogClass.forEach(elt => {
 
-        //let dogList = document.createElement("div");
-
-
         let dogNameLink = document.createElement("a");
             dogNameLink.href = "#";
             dogNameLink.style.width = cssReproButton.width;
             dogNameLink.classList.add("button-menu");
-
             dogNameLink.textContent = elt.dogName;
 
         listReproContainer.appendChild(dogNameLink);
-        //dogList.appendChild(dogNameLink);
 
         dogNameLink.addEventListener("click", showInfosDog);
         dogNameLink.addEventListener("click", showImgDog);
@@ -126,8 +121,7 @@ const infoCane = () => {
     caneCorsoInfo.style.display = "flex";
     caneCorsoInfo.style.flexDirection = "column";
     caneCorsoInfo.style.justifyContent = "flex-start";
-    dogPictPut.style.display = "none";
-    dogInfosPut.style.display = "none";
+
 
 }
 caneButton.addEventListener("click", infoCane);
@@ -164,35 +158,26 @@ fbButton.addEventListener("click", startfb);
 // Bouton Album photo
 
 let albumButton = menuContainer.children[2];
-
 let imageDefault = document.createElement("img");
-
 let dogListContent = document.createElement("div");
-
 
 const showAlbum = () => {
 
     caneCorsoInfo.style.display = "none";
     contentTitle.innerHTML = "";
     content.innerHTML = "";
+    dogListContent.innerHTML = "";
 
     content.style.display = "flex";
     content.style.flexDirection = "row";
-    content.style.justifyContent = "space-between";
+    content.style.justifyContent = "space-around";
 
 
 let thisIsAlbum = document.createElement("h1");
     thisIsAlbum.textContent = " Voici nos albums photos";
-    dogListContent.style.width = "20%";
-    dogListContent.style.display = "flex";
-    dogListContent.style.flexDirection = "column";
-    dogListContent.style.textAlign = "center";
-    dogListContent.style.justifyContent = "flex-start";
+    dogListContent.classList.add("dog-list-content");
 let albumContent = document.createElement("div");
-    albumContent.style.width = "76%";
-    albumContent.style.display = "flex";
-    albumContent.style.justifyContent = "space-around";
-    albumContent.style.alignItems = "center";
+    albumContent.classList.add("album-content");
 
     contentTitle.appendChild(thisIsAlbum);
     content.appendChild(dogListContent);
@@ -205,7 +190,6 @@ let albumContent = document.createElement("div");
             dogNameLink.textContent = elt.dogName;
             dogNameLink.href = "#";
             dogNameLink.classList.add("list-dog-link");
-            dogNameLink.classList.add("dogNameLink");
             dogListContent.appendChild(dogNameLink);
 
     });
@@ -213,13 +197,7 @@ let albumContent = document.createElement("div");
 
     imageDefault.src = path + images[0] + jpg;
     imageDefault.style.maxWidth = albumContent.style.width;
-    imageDefault.style.maxHeight = "500px";
-
-    imageDefault.style.width = "auto";
-    imageDefault.style.Height = albumContent.style.height;
-
-
-
+    imageDefault.classList.add("image-diapo-photo");
 
 albumContent.appendChild(arrowLeft);
 albumContent.appendChild(imageDefault);
@@ -228,39 +206,37 @@ albumContent.appendChild(arrowRight);
 }
 let arrowRight = document.createElement("a");
     arrowRight.href = "#";
-
-    arrowRight.style.border = "2px solid beige";
-    arrowRight.style.boxShadow = "3px 3px 5px";
-    arrowRight.style.fontSize = "2em";
-    arrowRight.textContent = " > ";
     arrowRight.classList.add("list-dog-link");
-    arrowRight.style.height = "20px"
-    arrowRight.style.width = "20px"
-    arrowRight.style.paddingBottom = "20px";
+    arrowRight.classList.add("arrow");
+    arrowRight.textContent = " > ";
 
 let arrowLeft = document.createElement("a");
-    arrowLeft.classList.add("list-dog-link");
     arrowLeft.href = "#";
-    arrowLeft.style.border = "2px solid beige";
-    arrowLeft.style.boxShadow = "3px 3px 5px";
-    arrowLeft.style.fontSize = "2em";
+    arrowLeft.classList.add("list-dog-link");
+    arrowLeft.classList.add("arrow");
     arrowLeft.textContent = " < ";
-    arrowLeft.style.height = "20px"
-    arrowLeft.style.width = "20px"
-    arrowLeft.style.paddingBottom = "20px";
 
 let navigationDiapo = 0;
 let arrayUrl = images;
 
-
 const showPictDiapo = () => {
-
     imageDefault.src = path + arrayUrl[navigationDiapo] + jpg;
+}
+const resetDogListColor = () => {
+    let tempArray = Array.from(dogListContent.children);
+    for(let i in tempArray) {
+        tempArray[i].style.color = "beige";
+        tempArray[i].style.backgroundColor = "";
+    };
 }
 
 const chooseDogPict = (e) => {
 
+    resetDogListColor();
+    e.target.style.backgroundColor = "white";
+    e.target.style.color = "black";
     let dogName = e.target.textContent.toLowerCase();
+    
     arrayUrl = [];
     let j = 0;
 
@@ -272,7 +248,6 @@ const chooseDogPict = (e) => {
             j++;
         }
     }
-    
     navigationDiapo = 0;
     showPictDiapo();
 }
@@ -286,7 +261,7 @@ const nextPict = (e) => {
         showPictDiapo();
     }
     else {
-        console.log("Il n'y a plus de photo")
+        console.log("Il n'y a plus de photo");
     }
 }
 
@@ -294,7 +269,7 @@ const lastPict = (e) => {
 
     e.preventDefault();
 
-    if(navigationDiapo > 0 && navigationDiapo < images.length)
+    if(navigationDiapo > 0 && navigationDiapo < arrayUrl.length)
     {
         navigationDiapo -= 1;
         showPictDiapo();
@@ -306,9 +281,7 @@ const lastPict = (e) => {
 
 arrowLeft.addEventListener("click", lastPict);
 arrowRight.addEventListener("click", nextPict);
-
 albumButton.addEventListener("click", showAlbum);
-
 dogListContent.addEventListener("click", chooseDogPict);
 
 
