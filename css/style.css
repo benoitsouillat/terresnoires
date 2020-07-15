@@ -4,6 +4,17 @@
     margin-top: 50px;
 }
 
+#create_new_dog {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+}
+
 #menu-container {
 
     width: 75%;
@@ -140,7 +151,7 @@
 .image-diapo-photo { /* Image affichée dans le diaporama */ 
     max-height: 500px;
     width: auto;
-    max-width: 95%;
+    max-width: 85%;
 
 }
 

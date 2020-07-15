@@ -51,6 +51,7 @@ const hideListRepro = () => {
 
     listReproContainer.style.display = "none";
     listReproContainer.innerHTML = "";
+
 }
 
 
@@ -78,19 +79,35 @@ const showListRepro = () => {
         
     });
 };
+function elementPosition (a) {
+    var b = a.getBoundingClientRect();
+    return {
+      clientX: a.offsetLeft,
+      clientY: a.offsetTop,
+      viewportX: (b.x || b.left),
+      viewportY: (b.y || b.top)
+    }
+  }
 
 const positionListRepro = (e) => {
 
+    var positions = elementPosition(e.target);
 
-     let startPositionLeft = reproButton.offsetLeft;
-     let startPositionTop = reproButton.offsetTop;
+    console.log("Position verticale dans le document" + positions.viewportY);
+    
+
+     let startPositionLeft = elementPosition(reproButton).clientX;
+     let startPositionTop = elementPosition(reproButton).viewportY;
  
      let endPositionLeft = startPositionLeft + listReproContainer.offsetWidth;
      let endPositionTop = startPositionTop + listReproContainer.offsetHeight + reproButton.offsetHeight;
 
+     console.log("start: " + startPositionTop);
+     console.log("end : " + endPositionTop);
+
     reproButton.addEventListener("mouseover", showListRepro, {once: true});
 
-     if (e.clientX >= startPositionLeft && e.clientX <= endPositionLeft && e.clientY >= startPositionTop && e.clientY <= endPositionTop)
+     if (e.clientX >= startPositionLeft && e.clientX <= endPositionLeft && e.viewportY >= startPositionTop && e.viewportY <= endPositionTop)
      {
         showListRepro();
      }

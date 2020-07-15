@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Ajouter un chien</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <h1>Ajouter un nouveau chien : </h1>
+        <form id="create_new_dog"> 
+            <label name="nom">Nom du chien</label>
+            <input type="text" name="nom" id="new_dog_name" required />
+            <label name="birth">Date de naissance</label>
+            <input type="text" placeholder="01 Janvier 1980" name="birth" id="new_dog_birth" required />
+            <label name="breeder">Choisir un élevage</label>
+            <select name="breeder" id="new_dog_breeder"></select>
+            <label name="breed">Choisir une race :</label>
+            <select name="breed" id="new_dog_breed"></select><br />
+            <input id="add_dog" type="submit" value="envoyer" />
+
+
+
+        </form>
+        <script src="app/ressources.js"></script>
+        <script src="app/adddog.js"></script>
+    </body>
+</html>

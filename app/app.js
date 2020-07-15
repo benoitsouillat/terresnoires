@@ -1,8 +1,3 @@
-const breed = " Cane Corso";
-const terreNoire = " du domaine des terres noires";
-const templeJade = " du temple de jade";
-const diMunteanu = " Cane di munteanu";
-const damoiseaux = " de la romance des damoiseaux";
 
 let contentTitle = document.getElementById("content-title");
 let content = document.getElementById("content");
@@ -10,25 +5,6 @@ content.style.display = "flex";
 content.style.flexDirection = "row";
 content.style.justifyContent = "space-around";
 
-class dog {
-    constructor(dogName, dogBirth, dogBreed, dogBreeder, dogLink){
-
-    this.dogName = dogName;
-    this.dogBirth = dogBirth;
-    this.dogBreed = dogBreed;
-    this.dogBreeder = dogBreeder;
-    this.dogLink = dogLink;
-    }
-}
-
-let okkaina = new dog ("Okkaina", "10 Septembre 2018", breed, templeJade, "#");
-let panama = new dog ("Panama", "02 Juin 2019", breed, templeJade, "#");
-let rock = new dog ("Rock", "18 Mars 2018", breed, diMunteanu, "#");
-let irreelle = new dog("Irréelle", "15 Septembre 2013", "whippet", damoiseaux, "#" );
-let nuitetoile = new dog("Nuit d'étoiles", "31 Octobre 2017", "whippet", damoiseaux, "#" );
-
-
-let dogClass = [okkaina, panama, rock, irreelle, nuitetoile]; 
 
 // Afficher les informations du chien
 
@@ -80,9 +56,6 @@ const showInfosDog = (e) => {
 
 // Afficher la liste d'images en cliquant sur le nom
 
-let path = "src/img/";
-let images = ["okkaina1", "okkaina2", "okkaina3", "okkaina4", "panama1", "panama2","panama3", "panama4", "rock1", "rock2", "rock3", "irréelle1", "nuit d'étoiles1"];
-let jpg = ".jpg";
 
 let dogPictPut = document.createElement("div");
 dogPictPut.id = "picture_container";
@@ -96,7 +69,7 @@ const showImgDog = (e) => {
 
     for (let i in images)
     {
-        if (images[i].indexOf(dogName) === 0)
+        if (images[i].indexOf(dogName) === 0 )
         {
             let print = document.createElement("img");
             print.src = path + images[i] + jpg;
@@ -122,3 +95,8 @@ let imageInfosCane = document.createElement("img");
     imageInfosCane.src = path + images[0] + jpg;
 
 imageContentInfosCane.appendChild(imageInfosCane);
+
+
+
+
+// Code pour ajouter un nouveau chien 
