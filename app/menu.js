@@ -79,7 +79,7 @@ const showListRepro = () => {
         
     });
 };
-function elementPosition (a) {
+/* function elementPosition (a) {
     var b = a.getBoundingClientRect();
     return {
       clientX: a.offsetLeft,
@@ -88,26 +88,21 @@ function elementPosition (a) {
       viewportY: (b.y || b.top)
     }
   }
+  */
 
 const positionListRepro = (e) => {
 
-    var positions = elementPosition(e.target);
 
-    console.log("Position verticale dans le document" + positions.viewportY);
-    
-
-     let startPositionLeft = elementPosition(reproButton).clientX;
-     let startPositionTop = elementPosition(reproButton).viewportY;
+     let startPositionLeft = reproButton.offsetLeft;
+     let startPositionTop = reproButton.offsetTop;
  
      let endPositionLeft = startPositionLeft + listReproContainer.offsetWidth;
      let endPositionTop = startPositionTop + listReproContainer.offsetHeight + reproButton.offsetHeight;
 
-     console.log("start: " + startPositionTop);
-     console.log("end : " + endPositionTop);
 
     reproButton.addEventListener("mouseover", showListRepro, {once: true});
 
-     if (e.clientX >= startPositionLeft && e.clientX <= endPositionLeft && e.viewportY >= startPositionTop && e.viewportY <= endPositionTop)
+     if (e.clientX >= startPositionLeft && e.clientX <= endPositionLeft && e.clientY >= startPositionTop && e.clientY <= endPositionTop)
      {
         showListRepro();
      }
@@ -121,7 +116,7 @@ const positionListRepro = (e) => {
 
 reproButton.addEventListener("mouseover", positionListRepro);
 listReproContainer.addEventListener("mouseout", positionListRepro);
-reproButton.addEventListener("mouseout", positionListRepro);
+// reproButton.addEventListener("mouseout", positionListRepro);
 
 listReproContainer.addEventListener("click", hideListRepro);
 
